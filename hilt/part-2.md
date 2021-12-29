@@ -83,6 +83,8 @@ class DIModule(){
 }
 </pre>
 
+To see how to inject different instances of the same type, check [part 3](part-3.md).
+
 ## Using `@Provides` to deal with interfaces
 
 <pre>
@@ -132,3 +134,5 @@ class MainActivity: AppCompatActivity() {
 
 }
 </pre>
+
+[Part 3](part-3.md)
