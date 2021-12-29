@@ -1,4 +1,4 @@
-# Hilt (Part 2)
+# Hilt (Part 2) - Custom objects, passing constructor arguments
 
 [Part 1](part-1.md)  
 
