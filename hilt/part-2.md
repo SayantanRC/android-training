@@ -44,16 +44,6 @@ constructor(<b>val base: Int</b>)       <b>// CONSTRUCTOR ARGUMENT</b>
 <pre>
 // ========================================================================
 
-class TestClassAdd                                      // Class needing dependency
-<i>@Inject</i>                                                 // CONSTRUCTOR INJECTION
-constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
-    fun getStringAddition() =
-        "Number 1: ${n1.value}, base: ${n1.base}, " +
-        "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
-}
-
-// ========================================================================
-
 class RandomNumberClass                              // Main dependency
 <i>@Inject</i>                                              // to inject
 constructor(val base: Int)
@@ -72,6 +62,17 @@ class DIModule(){                                // instances of dependencies
         return RandomNumberClass(3)
     }
 
+}
+
+// ========================================================================
+
+                                                            // Class needing dependency
+class TestClassAdd                                          // CONSTRUCTOR INJECTION
+<i>@Inject</i>
+constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
+    fun getStringAddition() =
+        "Number 1: ${n1.value}, base: ${n1.base}, " +
+        "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
 }
 
 // ========================================================================
