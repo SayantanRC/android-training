@@ -44,21 +44,6 @@ constructor(<b>val base: Int</b>)       <b>// CONSTRUCTOR ARGUMENT</b>
 <pre>
 // ========================================================================
 
-<i>@AndroidEntryPoint</i>                                   // Injection in Android
-class MainActivity: AppCompatActivity() {
-
-    <i>@Inject</i>
-    lateinit var testClassAdd: TestClassAdd
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        println("Result: ${testClassAdd.getStringAddition()}")
-    }
-
-}
-
-// ========================================================================
-
 class TestClassAdd                                      // Class needing dependency
 <i>@Inject</i>                                                 // CONSTRUCTOR INJECTION
 constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
@@ -90,6 +75,22 @@ class DIModule(){                                // instances of dependencies
 }
 
 // ========================================================================
+
+<i>@AndroidEntryPoint</i>                                   // Injection in Android
+class MainActivity: AppCompatActivity() {
+
+    <i>@Inject</i>
+    lateinit var testClassAdd: TestClassAdd
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        println("Result: ${testClassAdd.getStringAddition()}")
+    }
+
+}
+
+// ========================================================================
+
 </pre>
 
 To see how to inject different instances of the same type, check [part 3](part-3.md).
