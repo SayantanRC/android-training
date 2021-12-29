@@ -99,23 +99,27 @@ To see how to inject different instances of the same type, check [part 3](part-3
 ## Using `@Provides` to deal with interfaces
 
 <pre>
-/**
- * Interface defining some methods to be implemented.
- */
+
+// ========================================================================
+
+                                                    // Interface defining
+                                                    // some methods to be implemented.
 interface TestInterface {
     fun getAString(): String
 }
 
-/**
- * Implementation of the above interface.
- */
+// ========================================================================
+
+                                                    // Implementation of interface.
+                                                    // Needs to be injected
 class TestInterfaceImpl: TestInterface {
     override fun getAString() = "A string"
 }
 
-/**
- * Module defining how to create instance of [TestInterface].
- */
+// ========================================================================
+                                                    // Module defining how to create 
+                                                    // instance of interface from
+                                                    // implementation class
 @InstallIn(ActivityComponent::class)
 @Module
 class DIModule(){
@@ -127,6 +131,8 @@ class DIModule(){
 
 }
 
+// ========================================================================
+                                                    // Injection in android
 <i>@AndroidEntryPoint</i>
 class MainActivity: AppCompatActivity() {
 
