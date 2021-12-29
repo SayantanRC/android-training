@@ -116,4 +116,4 @@ constructor()
 
 #### WARNING!
 The source class (in the above example `RandomNumberClass`) cannot have constructor arguments.  
-[Check Part 2](https://gist.github.com/SayantanRC/6444d530354f8f160e3edf33e8da9d4c)  
+[Check Part 2](hilt/part-2.md)  
