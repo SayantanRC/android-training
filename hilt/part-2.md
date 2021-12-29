@@ -66,8 +66,8 @@ class DIModule(){                                // instances of dependencies
 
 // ========================================================================
 
-                                                            // Class needing dependency
-class TestClassAdd                                          // CONSTRUCTOR INJECTION
+                                                  // Class needing dependency
+class TestClassAdd                                // CONSTRUCTOR INJECTION
 <i>@Inject</i>
 constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
     fun getStringAddition() =
