@@ -62,10 +62,17 @@ class DIModule(){
 
 Sample code
 <pre>
-
+// ========================================================================
+                                                      // Annotation classes
+                                                      // used as "markers"
 <i>@Qualifier</i> annotation class n1
 <i>@Qualifier</i> annotation class n2           // The @Qualifier part may be optional
 
+// ========================================================================
+                                                      // Module using above 
+                                                      // annotation classes
+                                                      // to differentiate
+                                                      // instances of dependencies
 <i>@InstallIn(ActivityComponent::class)</i>
 <i>@Module</i>
 class DIModule(){
@@ -81,12 +88,14 @@ class DIModule(){
     fun getRandomNumber2(): RandomNumberClass{
         return RandomNumberClass(5)
     }
-
 }
 
+// ========================================================================
+                                                      // Class needing dependencies as
+                                                      // CONSTRUCTOR INJECTION
 class TestClassAdd
 <i>@Inject</i>
-constructor(                <b>// CONSTRUCTOR INJECTION</b>
+constructor(
     <b><i>@n1</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
     <b><i>@n2</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
 ) {
