@@ -1,6 +1,6 @@
 # Hilt (Part 2)
 
-[Part 1](hilt/part-1.md)  
+[Part 1](part-1.md)  
 
 ## Using `@Provides`
 
