@@ -69,7 +69,7 @@ constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass
 
 // ========================================================================
 
-class RandomNumberClass                                 // Main dependency
+class RandomNumberClass                              // Main dependency
 <i>@Inject</i>                                              // to inject
 constructor(val base: Int)
 {
@@ -80,7 +80,7 @@ constructor(val base: Int)
 
 <i>@InstallIn(ActivityComponent::class)</i>             // Module to define
 <i>@Module</i>                                          // how to create
-class DIModule(){                                           // instances of dependencies
+class DIModule(){                                // instances of dependencies
 
     <i>@Provides</i>
     fun provideRandomNumberClass(): RandomNumberClass {
