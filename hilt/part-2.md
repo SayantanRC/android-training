@@ -44,7 +44,7 @@ constructor(<b>val base: Int</b>)       <b>// CONSTRUCTOR ARGUMENT</b>
 <pre>
 // ========================================================================
 
-<i>@AndroidEntryPoint</i>                               // Injection in Android
+<i>@AndroidEntryPoint</i>                                   // Injection in Android
 class MainActivity: AppCompatActivity() {
 
     <i>@Inject</i>
@@ -60,7 +60,7 @@ class MainActivity: AppCompatActivity() {
 // ========================================================================
 
 class TestClassAdd                                      // Class needing dependency
-<i>@Inject</i>        <b>// CONSTRUCTOR INJECTION</b>
+<i>@Inject</i>                                          // CONSTRUCTOR INJECTION
 constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
     fun getStringAddition() =
         "Number 1: ${n1.value}, base: ${n1.base}, " +
@@ -70,7 +70,7 @@ constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass
 // ========================================================================
 
 class RandomNumberClass                                 // Main dependency
-<i>@Inject</i>                                          // to inject
+<i>@Inject</i>                                              // to inject
 constructor(val base: Int)
 {
     val value = (Math.random()*100).toInt() * base
@@ -80,7 +80,7 @@ constructor(val base: Int)
 
 <i>@InstallIn(ActivityComponent::class)</i>             // Module to define
 <i>@Module</i>                                          // how to create
-class DIModule(){                                       // instances of dependencies
+class DIModule(){                                           // instances of dependencies
 
     <i>@Provides</i>
     fun provideRandomNumberClass(): RandomNumberClass {
