@@ -60,7 +60,7 @@ class MainActivity: AppCompatActivity() {
 // ========================================================================
 
 class TestClassAdd                                      // Class needing dependency
-<i>@Inject</i>                                          // CONSTRUCTOR INJECTION
+<i>@Inject</i>                                                 // CONSTRUCTOR INJECTION
 constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
     fun getStringAddition() =
         "Number 1: ${n1.value}, base: ${n1.base}, " +
