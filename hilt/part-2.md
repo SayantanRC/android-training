@@ -42,7 +42,9 @@ constructor(<b>val base: Int</b>)       <b>// CONSTRUCTOR ARGUMENT</b>
 
 ### Full sample code
 <pre>
-<i>@AndroidEntryPoint</i>
+// ========================================================================
+
+<i>@AndroidEntryPoint</i>                               // Injection in Android
 class MainActivity: AppCompatActivity() {
 
     <i>@Inject</i>
@@ -55,7 +57,9 @@ class MainActivity: AppCompatActivity() {
 
 }
 
-class TestClassAdd
+// ========================================================================
+
+class TestClassAdd                                      // Class needing dependency
 <i>@Inject</i>        <b>// CONSTRUCTOR INJECTION</b>
 constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass){
     fun getStringAddition() =
@@ -63,17 +67,20 @@ constructor(private val n1: RandomNumberClass, private val n2: RandomNumberClass
         "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
 }
 
-class RandomNumberClass
-<i>@Inject</i>
+// ========================================================================
+
+class RandomNumberClass                                 // Main dependency
+<i>@Inject</i>                                          // to inject
 constructor(val base: Int)
 {
     val value = (Math.random()*100).toInt() * base
 }
 
-<b>// Module creation</b>
-<i>@InstallIn(ActivityComponent::class)</i>
-<i>@Module</i>
-class DIModule(){
+// ========================================================================
+
+<i>@InstallIn(ActivityComponent::class)</i>             // Module to define
+<i>@Module</i>                                          // how to create
+class DIModule(){                                       // instances of dependencies
 
     <i>@Provides</i>
     fun provideRandomNumberClass(): RandomNumberClass {
@@ -81,6 +88,8 @@ class DIModule(){
     }
 
 }
+
+// ========================================================================
 </pre>
 
 To see how to inject different instances of the same type, check [part 3](part-3.md).
