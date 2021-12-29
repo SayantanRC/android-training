@@ -7,16 +7,35 @@
 - Inside the `@Module` class, mark different methods with `@Named(SOME_STRING_ID)`.
 - At site of injection as well, use `@Named(SOME_STRING_ID)`. The `SOME_STRING_ID` passed in the bracket will be used to differentiate which injection goes where.
 
-### Sample code
+### Full sample code
 <pre>
-
-class RandomNumberClass             <b>// MAIN DEPENDENCY CLASS TO INJECT</b>
+// ========================================================================
+                                                        // Main dependency
+                                                        // to inject
+class RandomNumberClass
 <i>@Inject</i>
 constructor(val base: Int)
 {
     val value = (Math.random()*100).toInt() * base
 }
 
+// ========================================================================
+                                                        // Class needing dependency as
+                                                        // CONSTRUCTOR INJECTION
+class TestClassAdd
+<i>@Inject</i>
+constructor(
+    <b><i>@Named("n1")</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
+    <b><i>@Named("n2")</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
+) {
+    fun getStringAddition() =
+        "Number 1: ${n1.value}, base: ${n1.base}, " +
+                "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
+}
+
+// ========================================================================
+                                                        // Module defining
+                                                        // @Named parameters
 <i>@InstallIn(ActivityComponent::class)</i>
 <i>@Module</i>
 class DIModule(){
@@ -33,17 +52,6 @@ class DIModule(){
         return RandomNumberClass(5)
     }
 
-}
-
-class TestClassAdd
-<i>@Inject</i>
-constructor(                <b>// CONSTRUCTOR INJECTION</b>
-    <b><i>@Named("n1")</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
-    <b><i>@Named("n2")</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
-) {
-    fun getStringAddition() =
-        "Number 1: ${n1.value}, base: ${n1.base}, " +
-                "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
 }
 </pre>
 
