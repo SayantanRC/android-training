@@ -44,3 +44,44 @@ constructor(                <b>// CONSTRUCTOR INJECTION</b>
                 "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
 }
 </pre>
+
+## Using annotation classes
+
+- Declare different `annotation class`-es
+- Instead of using `@Named`, just use the class name as annotation.
+
+Sample code
+<pre>
+
+<i>@Qualifier</i> annotation class n1
+<i>@Qualifier</i> annotation class n2           // The @Qualifier part may be optional
+
+<i>@InstallIn(ActivityComponent::class)</i>
+<i>@Module</i>
+class DIModule(){
+
+    <b><i>@n1</i></b>
+    @Provides
+    fun getRandomNumber1(): RandomNumberClass{
+        return RandomNumberClass(3)
+    }
+
+    <b><i>@n2</i></b>
+    @Provides
+    fun getRandomNumber2(): RandomNumberClass{
+        return RandomNumberClass(5)
+    }
+
+}
+
+class TestClassAdd
+<i>@Inject</i>
+constructor(                <b>// CONSTRUCTOR INJECTION</b>
+    <b><i>@n1</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
+    <b><i>@n2</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
+) {
+    fun getStringAddition() =
+        "Number 1: ${n1.value}, base: ${n1.base}, " +
+                "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
+}
+</pre>
