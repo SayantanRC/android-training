@@ -1,4 +1,4 @@
-# Android sample code - Hilt (Part 1)
+# Hilt (Part 1)
 
 ## Get dependencies
 https://developer.android.com/training/dependency-injection/hilt-android
