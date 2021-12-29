@@ -27,7 +27,7 @@ class DIModule(){
 
 class TestClassAdd
 <i>@Inject</i>
-constructor(                <b>CONSTRUCTOR INJECTION</b>
+constructor(                <b>// CONSTRUCTOR INJECTION</b>
     <b><i>@Named("n1")</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
     <b><i>@Named("n2")</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
 ) {
