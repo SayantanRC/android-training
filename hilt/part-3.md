@@ -7,6 +7,14 @@
 
 ### Sample code
 <pre>
+
+class RandomNumberClass             <b>// MAIN DEPENDENCY CLASS TO INJECT</b>
+<i>@Inject</i>
+constructor(val base: Int)
+{
+    val value = (Math.random()*100).toInt() * base
+}
+
 <i>@InstallIn(ActivityComponent::class)</i>
 <i>@Module</i>
 class DIModule(){
