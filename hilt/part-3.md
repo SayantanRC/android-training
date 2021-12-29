@@ -20,20 +20,6 @@ constructor(val base: Int)
 }
 
 // ========================================================================
-                                                        // Class needing dependency as
-                                                        // CONSTRUCTOR INJECTION
-class TestClassAdd
-<i>@Inject</i>
-constructor(
-    <b><i>@Named("n1")</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
-    <b><i>@Named("n2")</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
-) {
-    fun getStringAddition() =
-        "Number 1: ${n1.value}, base: ${n1.base}, " +
-                "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
-}
-
-// ========================================================================
                                                         // Module defining
                                                         // @Named parameters
 <i>@InstallIn(ActivityComponent::class)</i>
@@ -52,6 +38,20 @@ class DIModule(){
         return RandomNumberClass(5)
     }
 
+}
+
+// ========================================================================
+                                                        // Class needing dependency as
+                                                        // CONSTRUCTOR INJECTION
+class TestClassAdd
+<i>@Inject</i>
+constructor(
+    <b><i>@Named("n1")</i></b> private val n1: RandomNumberClass,       // Corresponds to RandomNumberClass(3)
+    <b><i>@Named("n2")</i></b> private val n2: RandomNumberClass        // Corresponds to RandomNumberClass(5)
+) {
+    fun getStringAddition() =
+        "Number 1: ${n1.value}, base: ${n1.base}, " +
+                "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
 }
 </pre>
 
