@@ -1,5 +1,7 @@
 # Hilt (Part 3) - Passing different instances of the same type
 
+[Part 2](part-2.md)
+
 ## Using `@Named` annotation
 
 - Inside the `@Module` class, mark different methods with `@Named(SOME_STRING_ID)`.
