@@ -68,8 +68,8 @@ data class ResponseIndividualRecipe(
                                               // using annotations.
                                               
                                               // <b><i>@GET</i> - takes the api end point</b>
-                                              // <b>@Header</i> - takes info like token</b>
-                                              // <b>@Query</i> - marks query parameters</b>
+                                              // <b><i>@Header</i> - takes info like token</b>
+                                              // <b><i>@Query</i> - marks query parameters</b>
                                               
 // Example: https://food2fork.ca/api/recipe/search/?page=2&query=chicken
 // Base URL - https://food2fork.ca/api/
@@ -80,9 +80,9 @@ interface RetrofitInterface {
 
     <b><i>@GET</i></b>("recipe/search/")
     <i>suspend</i> fun queryByRecipes(
-        <b><i>@Header("Authorization")</i></b> token: String,
-        <b><i>@Query("page")</i></b> pageNo: Int,
-        <b><i>@Query("query")</i></b> recipes: String
+        <b><i>@Header</i></b>("Authorization") token: String,
+        <b><i>@Query</i></b>("page") pageNo: Int,
+        <b><i>@Query</i></b>("query") recipes: String
     ): ResponseMain
 
                                               // There can be other methods
@@ -114,7 +114,7 @@ val RetrofitService = Retrofit.Builder()
 
 
 
-// <b> Make the network call - from a coroutine scope.
+// <b> Make the network call - from a coroutine scope.</b>
 // ==========================================================================
 
 class MainActivity: AppCompatActivity() {
