@@ -146,7 +146,7 @@ class MainActivity: AppCompatActivity() {
 
 // Retrofit service object - same as above
 
-// <b>Retrofit interface<b>
+// <b>Retrofit interface</b>
 // Functions MUST NOT be suspend functions.
 // They must return a type <i>Call<model_class></i>
 // ==========================================================================
