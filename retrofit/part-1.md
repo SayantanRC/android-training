@@ -1,6 +1,6 @@
 # Retrofit - Part 1 - GET request
 
-### Add dependencies
+## Add dependencies
 ```
 def retrofitVersion = "2.9.0"
 implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -8,7 +8,7 @@ implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 ```
 Check the latest version from here: https://github.com/square/retrofit#download
 
-## Using Coroutines 
+## Using Coroutines
 
 [Add coroutine if not already added](https://github.com/Kotlin/kotlinx.coroutines#gradle)  
 
@@ -59,6 +59,7 @@ data class ResponseIndividualRecipe(
 
 // <b>RETROFIT interface</b>
 // Interface functions MUST be <b><i>suspend</i></b> functions.
+// Function return type - data model class.
 // ==========================================================================
 
                                               // The interface outlines the methods
@@ -134,6 +135,59 @@ class MainActivity: AppCompatActivity() {
     }
 
 }
+
+// ==========================================================================
+</pre>
+
+## Without using Coroutines
+
+<pre>
+// MODEL classes - same as above.
+
+// Retrofit service object - same as above
+
+// <b>Retrofit interface<b>
+// Functions MUST NOT be suspend functions.
+// They must return a type <i>Call<model_class></i>
+// ==========================================================================
+
+interface RetrofitInterface {
+
+    @GET("recipe/search/")
+    fun queryByRecipesByCall(
+        @Header("Authorization") token: String,
+        @Query("page") pageNo: Int,
+        @Query("query") recipes: String
+    ): Call<ResponseMain>
+
+}
+
+// ==========================================================================
+
+
+// <b>Make the network call, get the response using callback</b>
+// ==========================================================================
+
+val networkCall = RetrofitService.queryByRecipesByCall(
+    token = "Token 9c8b06d329136da358c2d00e76946b0111ce2c48",
+    pageNo = 1,
+    recipes = "beef"
+)
+
+                                              // enqueue methods puts the request
+                                              // on a queue for retrofit to execute.
+                                              // Once the call is executed the callback
+                                              // methods are called.
+
+networkCall.enqueue(object : Callback<ResponseMain> {
+    override fun onResponse(call: Call<ResponseMain>, response: Response<ResponseMain>) {
+        println("Result from network: ${response.body()?.results?.size}")
+    }
+
+    override fun onFailure(call: Call<ResponseMain>, t: Throwable) {
+
+    }
+})
 
 // ==========================================================================
 
