@@ -74,6 +74,16 @@ interface Table1Dao {
                                                     // Note the table name in SQL query matches
                                                     // with <i>@Entity</i> annotation "tableName",
                                                     // present in the "Table1Entity" data class.
+                                                    
+    
+    <i>@Query("SELECT EXISTS(SELECT * FROM Table1 WHERE name is <b>:name</b>)")</i>
+    suspend fun isPresent(name: String): Boolean
+                                                    // This method checks if the name entry exists.
+                                                    // Check how the method is passed to the query
+                                                    // (using a colon :)
+                                                    // We cannot use in argument like ${record.name}
+                                                    // as dot operator is not supported.
+                                                    // <i>@Query</i> can take only primary type variables.
 }
 
 // ===================================================================================
