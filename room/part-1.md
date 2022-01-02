@@ -102,46 +102,64 @@ abstract class AppDb: RoomDatabase() {
 }
 
 // ===================================================================================
+
+
+
+// <b>Create instance of Database class</b>
+// For singleton, create in a kotlin file, not inside class.
 // ===================================================================================
+
+                                                    // Needs context for Room.databaseBuilder
+                                                    // Argument 1 - context
+                                                    // Argument 2 - previuosly defined 
+                                                    //    database class extending RoomDatabase()
+                                                    // Argument 3 - name of database file
+                                                    
+                                                    // Creating database instance 
+                                                    // is an expensive operation.
+                                                    // Hence we create once and 
+                                                    // store that in a variable.
+
+private var DbSingleton : AppDb? = null
+fun <b><i>getAppDb</i></b>(context: Context): AppDb {
+    return DbSingleton ?:
+    Room.databaseBuilder(context, AppDb::class.java, "Name.db").build().apply {
+        DbSingleton = this
+    }
+}
+
 // ===================================================================================
+
+
+
+// <b>Call the DAO interface functions</b>
+// Call inside a coroutine scope.
 // ===================================================================================
+
+                                                    // Call the previously defined <i>getAppDb()</i>
+                                                    // function.
+                                                    // This is an instance of "AppDb" class
+                                                    // which contained "table1Dao()" function.
+                                                    // Use that method to get the instance of
+                                                    // DAO interface and then use the methods
+                                                    // defined in "Table1Dao" interface.
+
+class MainActivity: AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        CoroutineScope(IO).launch {
+            getAppDb(this@MainActivity).table1Dao().run {
+                insertRecord(
+                    Table1Entity(0, "sample_name_776")
+                )
+                println("DB result: ${getAllRecords()}, size: ${getAllRecords().size}")
+            }
+        }
+    }
+    
+}
+
 // ===================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </pre>
