@@ -103,6 +103,7 @@ class MainViewModel: ViewModel() {
                                                     // inside this class.
     private val _numberToText = MutableStateFlow("0")
 
+                                                    // Immutable state flow.
                                                     // This state flow is public and can be
                                                     // only used to observe state changes.
     val numberToText = _numberToText.asStateFlow()
