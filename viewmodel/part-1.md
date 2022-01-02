@@ -148,8 +148,8 @@ class MainActivity: AppCompatActivity(R.layout.activity_main) {
 
         lifecycleScope.launch {
         
-                                                    // Start observing the flow viewmodel.
-                                                    // Initially the value is 0.
+                                                    // Start observing the flow from viewmodel.
+                                                    // Initially the value is "0".
                                                     // We don't need to manually set the 
                                                     // value each time on the textview.
                                                     // Whenever the number increases, 
