@@ -29,9 +29,9 @@ implementation("androidx.room:room-ktx:$roomVersion")
                                                     
                                                     // This is similar to model class.
 
-@Entity(tableName = "Table1")
+<i>@Entity(tableName = "Table1")</i>
 data class Table1Entity (
-    @PrimaryKey(autoGenerate = true)
+    <i>@PrimaryKey(autoGenerate = true)</i>
     val id: Int,
     val name: String
 )
@@ -57,19 +57,19 @@ data class Table1Entity (
                                                     // 4. <i>@Query</i> - needs to have an 
                                                     //    SQL query statement.
 
-@Dao
+<i>@Dao</i>
 interface Table1Dao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)   // onConflit optional. Default - ABORT
+    <i>@Insert(onConflict = OnConflictStrategy.ABORT)</i>   // onConflit optional. Default - ABORT
     suspend fun insertRecord(record: Table1Entity)
 
-    @Delete
+    <i>@Delete</i>
     suspend fun deleteRecord(record: Table1Entity)
 
-    @Update
+    <i>@Update</i>
     suspend fun updateRecord(record: Table1Entity)
 
-    @Query("SELECT * FROM Table1")
+    <i>@Query("SELECT * FROM Table1")</i>
     suspend fun getAllRecords(): List<Table1Entity>
 
 }
@@ -94,7 +94,7 @@ interface Table1Dao {
                                                     // 3. Must have abstract functions with 
                                                     //    return type as DAO interface.
 
-@Database(entities = [Table1Entity::class], version = 1)
+<i>@Database(entities = [Table1Entity::class], version = 1)</i>
 abstract class AppDb: RoomDatabase() {
     abstract fun table1Dao(): Table1Dao
 }
