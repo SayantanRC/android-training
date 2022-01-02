@@ -71,7 +71,9 @@ interface Table1Dao {
 
     <i>@Query("SELECT * FROM Table1")</i>
     suspend fun getAllRecords(): List<Table1Entity>
-
+                                                    // Note the table name matches with 
+                                                    // <i>@Entity</i> annotation "tableName",
+                                                    // present in the "Table1Entity" data class.
 }
 
 // ===================================================================================
