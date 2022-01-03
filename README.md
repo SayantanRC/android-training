@@ -11,4 +11,5 @@
 - ROOM
   - [Part 1 - Introduction](room/part-1.md)  
 - Data binding
-  - [Part 1 - View binding](databinding/part-1.md)
+  - [Part 1 - View binding](databinding/part-1.md)  
+  - [Part 2 - Data binding](databinding/part-2.md)  
