@@ -1,4 +1,4 @@
-# View binding
+# Data binding - Part 1 - View binding
 
 ## Warning!
 Refactoring view ids do not work.  
