@@ -92,7 +92,7 @@ Let the layout file name be `just_a_fragment.xml`
 </LinearLayout>
 ```
 
-### Activity class
+### Fragment class
 
 <pre>
 class FragmentClass: Fragment() {
@@ -120,6 +120,27 @@ class FragmentClass: Fragment() {
                                                     // xml - <i>just_a_text</i>
                                                     // but in the binding it is in camel case
                                                     // <i>justAText</i>
+        binding.justAText.text = "Another text"
+    }
+
+}
+</pre>
+
+### Alternate way for the same thing as above
+
+<pre>
+                                                    // Pass the layout in Fragment constructor
+class FragmentClass: Fragment(R.layout.just_a_fragment) {
+
+    lateinit var binding: JustAFragmentBinding
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+                                                    // Use the <i>bind</i> function of binding class
+                                                    // to bind to the parent view.
+        binding = JustAFragmentBinding.bind(view)
+
         binding.justAText.text = "Another text"
     }
 
