@@ -7,7 +7,7 @@ Refactoring ids in xml do not automatically change them in activity classes.
 ## Enable in gradle
 ```
 android {
-    ...
+    //...
     buildFeatures {
         viewBinding true
     }
