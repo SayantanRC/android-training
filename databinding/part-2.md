@@ -1,5 +1,7 @@
 # Data binding - Part 2
 
+[Part 1](part-1.md)
+
 ## Enable in gradle
 ```
 android {
