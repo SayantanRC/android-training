@@ -146,3 +146,5 @@ class FragmentClass: Fragment(R.layout.just_a_fragment) {
 
 }
 </pre>
+
+[Part 2](part-2.md)
