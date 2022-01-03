@@ -116,8 +116,8 @@ class FragmentClass: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
                                                     // Access the views.
-                                                    // Note the name of id in
-                                                    // xml - <i>just_a_text</i>
+                                                    // Note the name of id in xml is
+                                                    // <i>just_a_text</i>
                                                     // but in the binding it is in camel case
                                                     // <i>justAText</i>
         binding.justAText.text = "Another text"
