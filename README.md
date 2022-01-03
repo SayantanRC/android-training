@@ -10,3 +10,5 @@
   - [Part 1 - GET requests](retrofit/part-1.md)  
 - ROOM
   - [Part 1 - Introduction](room/part-1.md)  
+- Data binding
+  - [Part 1 - View binding](databinding/part-1.md)
