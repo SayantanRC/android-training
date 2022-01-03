@@ -1,8 +1,8 @@
 # View binding
 
 ## Warning!
-Refactoring view ids do not work.
-Refactoring ids in xml do not automatically change them in activity classes.
+Refactoring view ids do not work.  
+Refactoring ids in xml do not automatically change them in activity classes.  
 
 ## Enable in gradle
 ```
@@ -65,6 +65,62 @@ class MainActivity: AppCompatActivity() {
                                                     // camel case as <i>simpleText</i>.
         binding.simpleText.text = "Hello world"
         
+    }
+
+}
+</pre>
+
+## Binding in Fragment
+
+### Layout XML file
+
+Let the layout file name be `just_a_fragment.xml`
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--           Note the view id          -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/just_a_text"/>
+
+</LinearLayout>
+```
+
+### Activity class
+
+<pre>
+class FragmentClass: Fragment() {
+
+                                                    // Note the name of binding class.
+                                                    // XML name - <i>just_a_fragment.xml</i>
+                                                    // Binding class - <i>JustAFragmentBinding</i>
+    lateinit var binding: JustAFragmentBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+    
+                                                    // Inflate the binding and return the root.
+        binding = JustAFragmentBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+                                                    // Access the views.
+                                                    // Note the name of id in
+                                                    // xml - <i>just_a_text</i>
+                                                    // but in the binding it is in camel case
+                                                    // <i>justAText</i>
+        binding.justAText.text = "Another text"
     }
 
 }
