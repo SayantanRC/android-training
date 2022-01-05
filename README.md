@@ -8,6 +8,7 @@
   - [Part 3 - Using `@Named` i.e. passing different instances of the same type](hilt/part-3.md)
 - Retrofit
   - [Part 1 - GET requests](retrofit/part-1.md)  
+  - [Uploading image using retrofit](https://medium.com/android-news/working-with-retrofit-825d30348fe2)  
 - ROOM
   - [Part 1 - Introduction](room/part-1.md)  
 - Data binding
