@@ -10,8 +10,8 @@ class ImageActivity : AppCompatActivity() {
 
                                                     // Modern alternative for onActivityResult().
                                                     // Cannot be lazy initialised.
-                                                    // This is used to launch system file picker
-                                                    // to select an image.
+                                                    // This is used to launch any gallery application,
+                                                    // or the system file picker to select an image.
     private val imageSelectionLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
 
