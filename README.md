@@ -1,7 +1,7 @@
 # Code samples / guide for Android
 
 - Selecting images
-  - [Part 1 - from Gallery][selecting_images/part-1.md]
+  - [Part 1 - from Gallery](selecting_images/part-1.md)  
 - ViewModel
   - [Part 1 - Basics](viewmodel/part-1.md)  
 - Hilt (dependency injection)
