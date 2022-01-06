@@ -38,10 +38,10 @@ class ImageActivity : AppCompatActivity() {
         binding.imageFromGalleryButton.setOnClickListener {
         
                                                     // For opening gallery, use intent action
-                                                    // <i>ACTION_GET_CONTENT</i>
-            <b>val imageFromGalleryIntent = Intent(<i>ACTION_GET_CONTENT</i>).apply {
-                type = "image/*"
-            }</b>
+                                                    // <i>ACTION_PICK</i>
+                                                    // For uri, no visible difference was seen
+                                                    // by using MediaStore.Images.Media.INTERNAL_CONTENT_URI
+            val imageFromGalleryIntent = Intent(<i>Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI</i>)
             imageSelectionLauncher.launch(Intent.createChooser(<i>imageFromGalleryIntent</i>, "Choose"))
         }
         
@@ -53,6 +53,12 @@ class ImageActivity : AppCompatActivity() {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "image/*"
             }</b>
+            
+                                                    // Another alternative is to use ACTION_GET_CONTENT
+            //val fileSelectionIntent = Intent(<i>ACTION_GET_CONTENT</i>).apply {
+            //  type = "image/*"
+            //}
+            
             imageSelectionLauncher.launch(Intent.createChooser(<i>fileSelectionIntent</i>, "Choose"))
         }
     }
