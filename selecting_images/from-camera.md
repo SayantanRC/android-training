@@ -3,6 +3,11 @@
 ### Create a provider
 The same provider is created as demonstrated here: [Creating file provider authority (by package name)](../misc/create-file-provider.md)
 
+### Manifest permission
+```
+<uses-permission android:name="android.permission.CAMERA"/>
+```
+
 ### Full sample code
 <pre>
 class ImageActivity : AppCompatActivity() {
