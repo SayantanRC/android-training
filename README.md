@@ -2,6 +2,7 @@
 
 - Selecting images
   - [From gallery / files](selecting_images/from-gallery.md)  
+  - [From camera](selecting_images/from-camera.md)  
 - ViewModel
   - [Part 1 - Basics](viewmodel/part-1.md)  
 - Hilt (dependency injection)
