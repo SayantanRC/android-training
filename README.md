@@ -17,3 +17,5 @@
 - Data binding
   - [Part 1 - View binding](databinding/part-1.md)  
   - [Part 2 - Data binding](databinding/part-2.md)  
+- Miscellaneous
+  - [Creating file provider authority (by package name)](misc/create-file-provider.md)  
