@@ -104,3 +104,5 @@ constructor(
                 "Number 2: ${n2.value}, base: ${n2.base}; Addition: ${n1.value + n2.value}"
 }
 </pre>
+
+[Part 4](part-4.md)
