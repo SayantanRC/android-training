@@ -3,10 +3,38 @@
 ## Get dependencies
 https://developer.android.com/training/dependency-injection/hilt-android
 
-#### WARNING!
-The plugin `kotlin("kapt")` may not work.  
-In that place use `id "kotlin-kapt"`.  
-[Source on stackoverflow](https://stackoverflow.com/questions/57380152/how-fix-build-gradle)  
+In project level `build.gradle` file
+```
+buildscript {
+
+    ext.dagger_version = "2.38.1"
+    
+    // ...
+    
+    dependencies {
+        // ...
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"
+        
+    }
+}
+```
+
+In app level `build.gradle` file
+```
+plugins {
+    // ...
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+// ...
+
+dependencies {
+    // ...
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    kapt "com.google.dagger:hilt-compiler:$dagger_version"
+}
+```
 
 ## Initialise Application class
 - Create application class and add <b>`@HiltAndroidApp`</b> annotation.
