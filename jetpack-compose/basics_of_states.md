@@ -32,27 +32,27 @@ class MainActivity: ComponentActivity() {
     var buttonText1 = "Un-clicked"
 
     @Composable
-    fun LiveButton1() {
+    fun LiveButton1() {                                     // LiveData1's "scope"
         println("Composed LiveButton1")
         Button(onClick = {                                  // button 1's onClick block
             println("Button 1 clicked")
             buttonText1 = "Clicked"
-        }) {                                                // compose block of button 1
+        }) {                                                // "scope" of button 1
             println("Composed button 1: $buttonText1")
-            Text(text = buttonText1)
+            Text(text = buttonText1)                        // simple Text "composable"
         }
     }
 
     var buttonText2 = "Un-clicked"
 
     @Composable
-    fun LiveButton2() {
+    fun LiveButton2() {                                     // LiveData2's scope
         println("Composed LiveButton2")
         Button(onClick = {                                  // button 2's onClick block
             println("Button 2 clicked")
             buttonText1 = "remote clicked"
             buttonText2 = "Clicked"
-        }) {                                                // compose block of button 2
+        }) {                                                // "scope" of button 2
             println("Composed button 2: $buttonText2")
             Text(text = buttonText2)
         }
@@ -61,7 +61,9 @@ class MainActivity: ComponentActivity() {
 }
 ```
 
-This is a basic example that shows two buttons vertically, with log statements to highlight control flow. We will use this code in next examples with some modifications.
+This is a basic example that shows two buttons vertically, with log statements to highlight control flow. We will use this code in next examples with some modifications. 
+- "Scope" refers to the block responsible for drawing the element, here we will deal with scope of the buttons.
+- Composable is anything that draws. The `Text`, `Button`, `Column`, even the functions `LiveData1` and `LiveData2` are composables, they have their own "scope"s.
 
 **NOTE:** We are using global / class variables, not variables inside `@Composable` functions unlike other tutorials. Also note we are not using `remember`, if you don't know what that is, don't worry about it.
 
@@ -77,20 +79,20 @@ This is a basic example that shows two buttons vertically, with log statements t
   ```
   I/System.out: Button 1 clicked
   ```
-- On clicking the second button, similar to first button, no UI change and only the clicked event log appears.
+- On clicking the second button, similar to first button, no UI change and only the click event is logged.
   ```
   I/System.out: Button 2 clicked
   ```
 
 ### Why
-If you have read about compose, you would know that Jetpack compose does not play very well with variables directly used in the UI, the UI gets updated only for a **STATE change**. A variable value change is not viewed as a state change, hence compose does not update the UI. This will get clearer in the next examples.
+If you have read about compose, you would know that Jetpack compose does not play very well with variables directly used in the UI, the UI gets updated only for a **STATE change**. A simple variable value change is not viewed as a state change, hence compose does not update the UI. The variable must be a **state variable** to update the UI. This will get clearer in the next examples.
 
 ## Example 2
 ```
 ...
 ...
 
-    var buttonText1 = mutableStateOf("Un-clicked")                  // changed to state
+    var buttonText1 = mutableStateOf("Un-clicked")                  // changed to state variable
 
     @Composable
     fun LiveButton1() {
@@ -136,7 +138,7 @@ Let's fix one of the buttons. Here we change the `buttonText1` variable to a sta
   ```
   **Notice 3 things.** 
   - The text changes to "Clicked".
-  - The onClick block for the button as well as compose block for drawing the text is executed.
+  - The onClick block for the button as well as "scope" block for drawing the text is re-executed.
   - Important: The entire `LiveButton1` function is not executed again, if that would have happened, we would get another log saying "Composed LiveButton1".
 - On pressing the second button
   ```
@@ -146,18 +148,18 @@ Let's fix one of the buttons. Here we change the `buttonText1` variable to a sta
   **Notice 5 things here.** 
   - Text on button 1 changes.
   - Text on button 2 does not change.
-  - Button 2's onClick block is fired, but compose block of button 2 is not executed.
-  - Button 1 has not been clicked again (as is evident from the logs), but compose block of button 1 is executed.
+  - Button 2's onClick block is fired, but scope of button 2 is not re-executed (hence no change for button 2).
+  - Button 1 has NOT been clicked again (as is evident from the logs), but "scope" block of button 1 is executed.
   - Neither `LiveButton1` nor `LiveButton2` gets executed from the start.
 
 ### Why
-The why is simple. Only the first button's composable **accessed a state variable's value**, that block got updated whenever and from wherever that state variable was updated. This is the reason, when button 2 was clicked, the compose block of button 1 was executed as the onClick block of button 2 updated state of a variable `buttonText1` whose value was being accessed in the said block.  
-On the other hand button 2's text never got updated because it's compose block never dealt with any state.  
-> **A composable block will be executed if any of the state variables inside it, whose value is accessed in the block, is updated from any part of the code. Re-composition will happen at the lowest possible level in the UI tree to deal with only the specific state change, no higher element / block will be re-executed.  
-> This effect is only valid for a compose block, other types of blocks (like onClick) do not re-execute in similar circumstances.**
+The why is simple. Only the first button's scope **accessed a state variable's value**, that block got updated whenever and from wherever that state variable was updated. This is the reason, when button 2 was clicked, the scope of button 1 was re-executed, as the onClick block of button 2 updated state of a variable `buttonText1`, whose value was being accessed in the button 1's scope.  
+On the other hand button 2's text never got updated because it's scope never dealt with any state.  
+> **A composable's scope will be executed if any of the state variables inside it, whose VALUE is accessed in the block, is updated from any part of the code. Re-composition will happen at the lowest possible level in the UI tree to deal with only the specific state change, no higher element / block will be re-executed.  
+> This effect is only valid for a composable's scope, other types of blocks (like onClick) do not re-execute in similar fashion.**
 
 ## Example 3
-If asked how to fix button 2, one obvious answer would be to change `buttonText2` to a `MutableState` variable as was done for `buttonText1`. However, in this paericular example, we can do something else.
+If asked how to fix button 2, one obvious answer would be to change `buttonText2` to a `MutableState` variable as was done for `buttonText1`. However, in this paricular example, we can do something else.
 ```
 ...
 ...
