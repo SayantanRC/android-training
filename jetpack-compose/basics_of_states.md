@@ -65,7 +65,7 @@ This is a basic example that shows two buttons vertically, with log statements t
 - "Scope" refers to the block responsible for drawing the element, here we will deal with scope of the buttons.
 - Composable is anything that draws. The `Text`, `Button`, `Column`, even the functions `LiveData1` and `LiveData2` are composables, they have their own "scope"s.
 
-**NOTE:** We are using global / class variables, not variables inside `@Composable` functions unlike other tutorials. Also note we are not using `remember`, if you don't know what that is, don't worry about it.
+**NOTE:** We are using global / class variables, not variables inside `@Composable` functions unlike other tutorials. Also note we are not using `remember`, if you don't know what that is, it will be illustrated in [Part 2]().
 
 - On running this we get the following logs:
   ```
