@@ -61,7 +61,7 @@ class MainActivity: ComponentActivity() {
 }
 ```
 
-This is a basic example that shows two buttons vertically, with log statements to highlight control flow. We will use this code in nect examples with some modifications.
+This is a basic example that shows two buttons vertically, with log statements to highlight control flow. We will use this code in next examples with some modifications.
 
 **NOTE:** We are using global / class variables, not variables inside `@Composable` functions unlike other tutorials. Also note we are not using `remember`, if you don't know what that is, don't worry about it.
 
