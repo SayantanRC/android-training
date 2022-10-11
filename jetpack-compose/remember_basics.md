@@ -1,7 +1,7 @@
 # Remember
 
 `remember` is a simple concept. It goes like this. In a function, we need local variables, we cannot put everything as class variables. `remember` comes allows us to define local state variables in a composable function.
-1. `remember` block allows initializing a local state variable inside a composable function.
+1. `remember` block allows initializing a local state variable inside a composable function. We cannot just have `val a = mutableStateOf(0)` inside a function without wrapping it in `remember`, i.e `val a = remember { mutableStateOf(0) }`.
 2. Code inside a remember block is executed only ONCE in the scope of the composable.
 
 ## Example 1
