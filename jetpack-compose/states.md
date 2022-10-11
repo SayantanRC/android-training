@@ -34,10 +34,10 @@ class MainActivity: ComponentActivity() {
     @Composable
     fun LiveButton1() {
         println("Composed LiveButton1")
-        Button(onClick = {
+        Button(onClick = {                                  // onClick block
             println("Button 1 clicked")
             buttonText1 = "Clicked"
-        }) {
+        }) {                                                // compose block of button 1
             println("Composed button 1: $buttonText1")
             Text(text = buttonText1)
         }
@@ -48,11 +48,11 @@ class MainActivity: ComponentActivity() {
     @Composable
     fun LiveButton2() {
         println("Composed LiveButton2")
-        Button(onClick = {
+        Button(onClick = {                                  // onClick block
             println("Button 2 clicked")
             buttonText1 = "remote clicked"
             buttonText2 = "Clicked"
-        }) {
+        }) {                                                // compose block of button 2
             println("Composed button 2: $buttonText2")
             Text(text = buttonText2)
         }
@@ -153,4 +153,5 @@ Let's fix one of the buttons. Here we change the `buttonText1` variable to a sta
 ### Why
 The why is simple. Only the first button's composable **accessed a state variable's value**, that block got updated whenever and from wherever that state variable was updated. This is the reason, when button 2 was clicked, the compose block of button 1 was executed as the onClick block of button 2 updated state of a variable `buttonText1` whose value was being accessed in the said block.  
 On the other hand button 2's text never got updated because it's compose block never dealt with any state.  
-> **A composable block will be executed if any of the state variables inside it, whose value is accessed in the block, is updated from any part of the code. Re-composition will happen at the lowest possible level in the UI tree to deal with only the specific state change, no higher element / block will be re-executed.**
+> **A composable block will be executed if any of the state variables inside it, whose value is accessed in the block, is updated from any part of the code. Re-composition will happen at the lowest possible level in the UI tree to deal with only the specific state change, no higher element / block will be re-executed.  
+> This effect is only valid for a compose block, other types of blocks (like onClick) do not re-execute in similar circumstances.**
