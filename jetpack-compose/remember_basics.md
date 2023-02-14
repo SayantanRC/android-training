@@ -6,7 +6,7 @@
 
 ## Example 1
 
-```
+```kotlin
 class MainActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +57,7 @@ class MainActivity: ComponentActivity() {
 The button keeps updating as expected. Lets try something else.
 
 ## Example 2
-```
+```kotlin
     var i = 0
 
     @Composable
