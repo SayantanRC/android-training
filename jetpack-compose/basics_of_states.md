@@ -216,7 +216,7 @@ Let's run the code and see what happens.
   I/System.out: Composed button 1: remote clicked
   I/System.out: Composed button 2: Clicked
   ```
-  **Surprise!** Although `buttonText2` is not a state variable, button 2's text got updated. This is because it was accessing the value of `buttonText1` which also got changed at the same time with `buttonText2`. Due to this happy coincidence, button 2's text was updated.
+  **Surprise!** Although `buttonText2` is not a state variable, button 2's text got updated. This is because it was accessing the value of `buttonText1` which also got changed at the same time with `buttonText2` (inside the second button's onClick block). Due to this happy coincidence, button 2's text was updated.
   
 **One small and important to note**: If we just had:
 ```kotlin
