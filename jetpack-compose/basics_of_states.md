@@ -88,7 +88,7 @@ This is a basic example that shows two buttons vertically, with log statements t
 If you have read about compose, you would know that Jetpack compose does not play very well with variables directly used in the UI, the UI gets updated only for a **STATE change**. A simple variable value change is not viewed as a state change, hence compose does not update the UI. The variable must be a **state variable** to update the UI. This will get clearer in the next examples.
 
 ## Example 2
-```
+```kotlin
 ...
 ...
 
@@ -161,7 +161,7 @@ On the other hand button 2's text never got updated because it's scope never dea
 
 ## Example 3
 If asked how to fix button 2, one obvious answer would be to change `buttonText2` to a `MutableState` variable as was done for `buttonText1`. However, in this paricular example, we can do something else.
-```
+```kotlin
 ...
 ...
     var buttonText1 = mutableStateOf("Un-clicked")
@@ -219,7 +219,7 @@ Let's run the code and see what happens.
   **Surprise!** Although `buttonText2` is not a state variable, button 2's text got updated. This is because it was accessing the value of `buttonText1` which also got changed at the same time with `buttonText2`. Due to this happy coincidence, button 2's text was updated.
   
 **One small and important to note**: If we just had:
-```
+```kotlin
 ...
 ...
     @Composable
