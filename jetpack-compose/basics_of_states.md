@@ -3,7 +3,7 @@
 If anyone is barely starting with Jetpack compose, they might get very confused with basics like `mutableStateOf`, `remember` etc. I did. So here is a guide to hopefully clear some concepts, in a programmatic way.
 
 ## Example 1
-```
+```kotlin
 package balti.finance.cardx
 
 import android.os.Bundle
@@ -32,7 +32,7 @@ class MainActivity: ComponentActivity() {
     var buttonText1 = "Un-clicked"
 
     @Composable
-    fun LiveButton1() {                                     // LiveData1's "scope"
+    fun LiveButton1() {                                     // LiveButton1's "scope"
         println("Composed LiveButton1")
         Button(onClick = {                                  // button 1's onClick block
             println("Button 1 clicked")
@@ -145,11 +145,12 @@ Let's fix one of the buttons. Here we change the `buttonText1` variable to a sta
   I/System.out: Button 2 clicked
   I/System.out: Composed button 1: remote clicked
   ```
-  **Notice 5 things here.** 
+  **Notice 6 things here.** 
   - Text on button 1 changes.
   - Text on button 2 does not change.
   - Button 2's onClick block is fired, but scope of button 2 is not re-executed (hence no change for button 2).
   - Button 1 has NOT been clicked again (as is evident from the logs), but "scope" block of button 1 is executed.
+  - For button 1, only its scope is executed, not the onClick block.
   - Neither `LiveButton1` nor `LiveButton2` gets executed from the start.
 
 ### Why
