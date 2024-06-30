@@ -98,7 +98,7 @@ val appModule = <b><i>module</i></b> {
 
 ```
 class MainActivity: ComponentActivity() {
-    private val viewModel by viewModel<MainViewModel>()
+    private val viewModel: MainViewModel by inject()
 }
 ```
 
@@ -108,7 +108,7 @@ In this example we inject `MyApi` just for representation.
 ```
 class MainActivity: ComponentActivity() {
     //...
-    private val api : MyApi by inject()
+    private val api: MyApi by inject()
 }
 ```
 
