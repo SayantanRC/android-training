@@ -9,7 +9,9 @@
   - [Part 1 - Introduction](hilt/part-1.md)
   - [Part 2 - Using `@Provides` i.e. custom objects, passing constructor arguments](hilt/part-2.md)
   - [Part 3 - Using `@Named` i.e. passing different instances of the same type](hilt/part-3.md)  
-  - [Part 4 - Injecting `ViewModel` in activity](hilt/part-4.md)  
+  - [Part 4 - Injecting `ViewModel` in activity](hilt/part-4.md)
+- Koin
+  - [Part 1 - Introduction](koin/part-1.md)
 - Retrofit
   - [Part 1 - GET requests](retrofit/part-1.md)  
   - [Uploading image using retrofit](https://medium.com/android-news/working-with-retrofit-825d30348fe2)  
