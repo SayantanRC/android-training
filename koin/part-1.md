@@ -69,7 +69,7 @@ implementation("io.insert-koin:koin-androidx-workmanager")
 
 ## Create how to inject
 
-Create a class `AppModule.kt`.
+Create a file `AppModule.kt`.
 <pre>
 val appModule = <b><i>module</i></b> {
     <b><i>single</i></b> {
