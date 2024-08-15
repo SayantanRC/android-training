@@ -1,5 +1,6 @@
 # Code samples / guide for Android
 
+- [Shortcuts](shortcuts.md)
 - Selecting images
   - [From gallery / files](selecting_images/from-gallery.md)  
   - [From camera](selecting_images/from-camera.md)  
