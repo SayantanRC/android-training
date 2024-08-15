@@ -8,7 +8,7 @@ val notificationManager =
 ```
 New:
 ```
-val notificationManager = context.getSystemService<NotificationManager>()
+val notificationManager = context.getSystemService(NotificationManager::class.java)
 ```
 
 ## Write to `SharedPreferences`
