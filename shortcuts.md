@@ -11,7 +11,7 @@ New:
 val notificationManager = context.getSystemService<NotificationManager>()
 ```
 
-## Write to `SharedPreference`
+## Write to `SharedPreferences`
 Old:
 ```
 val editor = sharedPref.edit()
